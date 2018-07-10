@@ -1,15 +1,14 @@
 <?php
 
-declare(strict_types=1);
 namespace CodeShopping\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Product extends Model
 {
     use Sluggable;
-    protected $fillable = [ 'name', 'active'];
+    protected $fillable = [ 'name','description','price','active','slug'];
 
     /**
      * Return the sluggable configuration array for this model.
@@ -23,5 +22,6 @@ class Category extends Model
                 'source' => 'name'
             ]
         ];
+
     }
 }
