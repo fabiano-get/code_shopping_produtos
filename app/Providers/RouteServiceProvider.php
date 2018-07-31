@@ -37,7 +37,6 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         Route::bind('product', function($value) {
-            //dump and die
             /** @var Collection $collection */
             $collection = Product::whereId($value)->orWhere('slug',$value)->get();
             return $collection->first();

@@ -19,9 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
-    Route::resource('categories','CategoryController', ['except' => ['create', 'edit']]);
-});
-
-Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
     Route::resource('products', 'ProductController', ['except' => ['create', 'edit']]);
+    Route::resource('categories','CategoryController', ['except' => ['create', 'edit']]);
+    //recurso filho
+//    POST products/1/categories
+//    PUT products/1/categories  ADICIONAR E REMOVER -> [1,3] [10 CATEGORIAS]
+//    GET products/1/categories
+//    DELETE products/1/categories
+//    DELETE products/1/categories/10
+    Route::resource('products.categories','ProductCategoryController', ['only' => ['index','store','destroy']]);
+    // GET products/{product}/categories
+    //
 });
