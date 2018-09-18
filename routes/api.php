@@ -28,7 +28,9 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
 //    DELETE products/1/categories
 //    DELETE products/1/categories/10
     Route::resource('products.categories','ProductCategoryController', ['only' => ['index','store','destroy']]);
+    Route::resource('products.photos','ProductPhotoController', ['except' => ['create', 'edit']]);
     Route::resource('inputs','ProductInputController', ['only' => ['index','store','show']]);
+    Route::resource('outputs','ProductOutputController', ['only' => ['index','store','show']]);
     // GET products/{product}/categories
     //
 });
