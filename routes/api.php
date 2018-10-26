@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
+    Route::patch('products/{product}/restore', 'ProductController@restore');
     Route::resource('products', 'ProductController', ['except' => ['create', 'edit']]);
     Route::resource('categories','CategoryController', ['except' => ['create', 'edit']]);
     //recurso filho
@@ -31,6 +32,7 @@ Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
     Route::resource('products.photos','ProductPhotoController', ['except' => ['create', 'edit']]);
     Route::resource('inputs','ProductInputController', ['only' => ['index','store','show']]);
     Route::resource('outputs','ProductOutputController', ['only' => ['index','store','show']]);
+    Route::resource('users','UserController', ['except' => ['create', 'edit']]);
     // GET products/{product}/categories
     //
 });
